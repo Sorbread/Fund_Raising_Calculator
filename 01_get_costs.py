@@ -7,12 +7,17 @@ all_totals = []
 pandas_schema = {"Name": all_names, "Subtotal": all_subtotals, "Total": all_totals}
 
 
-def yn(inp):
+# Gets inputs
+def get_input(inp_text, valid_inps):
     while True:
         try:
-            answer = input(inp)
+            response = input(inp_text).lower()
+            if response in valid_inps:
+                return response
         except:
-            print("Please enter Y/n")
+            print(
+                f"Please enter a valid response, such as {valid_inps[0]}, {valid_inps[1]}"
+            )
 
 
 # Get costs associated (and returns list of all, and total costs)
@@ -24,4 +29,8 @@ def get_costs(inp):
                 break
             except:
                 print("Please enter a cost")
-        question = yn("Would you like to enter another variable? (Y/N): ")
+        question = get_input(
+            "Would you like to enter another variable? (Y/N): ", ["y", "n", "yes", "no"]
+        )
+        if question == "n" or "no":
+            break
