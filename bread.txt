@@ -1,0 +1,17 @@
+---- Fundraiser Calculator for bread. 30/05/23 ----
+  Product Name  Amount to Produce  Total Expenses  Minimum Selling Price  Recommended Selling Price
+0        bread                400          1250.0                 4.6875                          5
+-- Subtotals: --
+
+    Variable Costs:
+        Name of Item: mayo
+        Cost of Item: 2.5
+        Amount of Item: 200
+        Name of Item: tomato sauce
+        Cost of Item: 3.5
+        Amount of Item: 100
+    Fixed Costs:
+        Name of Item: stall
+        Cost of Item: 400.0
+        Amount of Item: 1
+

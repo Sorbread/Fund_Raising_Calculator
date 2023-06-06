@@ -1,5 +1,6 @@
 import pandas
 import math
+import textwrap
 from datetime import date
 
 all_names = []
@@ -46,7 +47,7 @@ def valid_integer(inp):
             print("Please enter an integer. (e.g. 2,3)")
 
 
-# Get costs associated (and returns a dictionary in form ["Name": string,"Cost": float])
+# Get costs associated (and returns a dictionary in form ["Name": string,"Cost": float,"Amount":integer])
 # Takes input 'cost_type' which is a string value, either "variable" or "fixed"
 def costs(cost_type):
     cost_list = {"Name": [], "Cost": [], "Amount": []}
@@ -141,12 +142,10 @@ while True:
     # all_totals.append(total_expenses)
     # all_min_selling.append(min_selling_price)
     # all_rec_selling.append(recommended_selling_price)
-    var_cost_string = pandas.DataFrame.to_string(pandas.DataFrame(var_costs))
-    fixed_cost_string = pandas.DataFrame.to_string(pandas.DataFrame(fixed_costs))
     fundraiser_dict = {
-        "Product Name": name,
-        "All Subtotals": f"{var_cost_string}\n{fixed_cost_string}",
-        "All Totals": total_expenses,
+        "Product Name": [name],
+        "Amount to Produce": amount_to_produce,
+        "Total Expenses": total_expenses,
         "Minimum Selling Price": min_selling_price,
         "Recommended Selling Price": recommended_selling_price,
     }
@@ -165,7 +164,32 @@ while True:
     heading = f"---- Fundraiser Calculator for {name}. {day}/{month}/{year} ----"
     fundraiser_string = pandas.DataFrame.to_string(fundraiser_frame)
 
-    to_write = [heading, fundraiser_string]
+    subtotal_heading = "-- Subtotals: --\n"
+    subtotal_printout = ""
+
+    # List Variable Costs
+    subtotal_printout += textwrap.indent("Variable Costs:", 4 * " ")
+    for i in range(len(var_costs["Name"])):
+        item_name = var_costs["Name"][i]
+        item_cost = var_costs["Cost"][i]
+        item_amount = var_costs["Amount"][i]
+        subtotal_printout += textwrap.indent(
+            f"\nName of Item: {item_name}\nCost of Item: {item_cost}\nAmount of Item: {item_amount}\n",
+            8 * " ",
+        )
+
+    # List Fixed Costs
+    subtotal_printout += textwrap.indent("Fixed Costs:", 4 * " ")
+    for i in range(len(fixed_costs["Name"])):
+        item_name = fixed_costs["Name"][i]
+        item_cost = fixed_costs["Cost"][i]
+        item_amount = fixed_costs["Amount"][i]
+        subtotal_printout += textwrap.indent(
+            f"\nName of Item: {item_name}\nCost of Item: {item_cost}\nAmount of Item: {item_amount}\n",
+            8 * " ",
+        )
+
+    to_write = [heading, fundraiser_string, subtotal_heading, subtotal_printout]
     for item in to_write:
         print(item)
 
