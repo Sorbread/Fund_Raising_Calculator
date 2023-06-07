@@ -71,7 +71,7 @@ def costs(cost_type):
 
 # Gets cost of all ["Cost"] values in array, multiplied by amount
 def get_total_cost(list):
-    if len(var_costs) == 0:
+    if len(list) == 0:
         return 0
     total_cost = 0
     for i in range(len(list["Cost"])):
@@ -91,7 +91,7 @@ def get_profit_goal(expenses):
         return expenses * (percentage / 100 + 1)
 
     # Get and return profit goal from number
-    return valid_cost("Please enter the profit goal: $")
+    return valid_cost("Please enter the profit goal: $") + expenses
 
 
 # Main Loop
@@ -162,6 +162,7 @@ while True:
 
     # Main Heading
     heading = f"---- Fundraiser Calculator for {name}. {day}/{month}/{year} ----"
+    fundraiser_frame = fundraiser_frame.set_index("Product Name")
     fundraiser_string = pandas.DataFrame.to_string(fundraiser_frame)
 
     subtotal_heading = "-- Subtotals: --\n"
