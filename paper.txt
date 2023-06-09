@@ -1,0 +1,15 @@
+---- Fundraiser Calculator for paper. 09/06/23 ----
+              Amount to Produce  Total Expenses  Minimum Selling Price  Recommended Selling Price
+Product Name                                                                                     
+paper                       100          1400.0                   21.0                         21
+-- Subtotals: --
+
+    Variable Costs:
+        Name of Item: mayo
+        Cost of Item: 20.0
+        Amount of Item: 20
+    Fixed Costs:
+        Name of Item: milk
+        Cost of Item: 200.0
+        Amount of Item: 5
+

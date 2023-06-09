@@ -56,6 +56,16 @@ def costs(cost_type):
         item_name = input(f"Please enter the name of one {cost_type} cost: ")
         cost = valid_cost("Please enter the cost of this item (individual): $")
         amount = valid_integer("Please enter how many are needed: ")
+        # Confirm data is correct.
+        print(
+            f"\nName of Item: {item_name}\nCost of Item: {cost}\nAmount of Item: {amount}\n"
+        )
+        correct_data = get_input(
+            f"Is the preceding data correct? (Y/N): ",
+            ["y", "n", "yes", "no"],
+        )
+        if correct_data == "n":
+            continue
         cost_list["Name"].append(item_name)
         cost_list["Cost"].append(cost)
         cost_list["Amount"].append(amount)
@@ -137,11 +147,8 @@ while True:
 
     # Get totals
     sub_total = [var_costs, fixed_costs]
-    # all_subtotals.append(sub_total)
-    # all_names.append(name)
-    # all_totals.append(total_expenses)
-    # all_min_selling.append(min_selling_price)
-    # all_rec_selling.append(recommended_selling_price)
+
+    # Create dictionary of items that listed in-line (only important notes)
     fundraiser_dict = {
         "Product Name": [name],
         "Amount to Produce": amount_to_produce,
@@ -170,25 +177,27 @@ while True:
 
     # List Variable Costs
     subtotal_printout += textwrap.indent("Variable Costs:", 4 * " ")
-    for i in range(len(var_costs["Name"])):
-        item_name = var_costs["Name"][i]
-        item_cost = var_costs["Cost"][i]
-        item_amount = var_costs["Amount"][i]
-        subtotal_printout += textwrap.indent(
-            f"\nName of Item: {item_name}\nCost of Item: {item_cost}\nAmount of Item: {item_amount}\n",
-            8 * " ",
-        )
+    if len(var_costs) > 0:
+        for i in range(len(var_costs["Name"])):
+            item_name = var_costs["Name"][i]
+            item_cost = var_costs["Cost"][i]
+            item_amount = var_costs["Amount"][i]
+            subtotal_printout += textwrap.indent(
+                f"\nName of Item: {item_name}\nCost of Item: {item_cost}\nAmount of Item: {item_amount}\n",
+                8 * " ",
+            )
 
     # List Fixed Costs
     subtotal_printout += textwrap.indent("Fixed Costs:", 4 * " ")
-    for i in range(len(fixed_costs["Name"])):
-        item_name = fixed_costs["Name"][i]
-        item_cost = fixed_costs["Cost"][i]
-        item_amount = fixed_costs["Amount"][i]
-        subtotal_printout += textwrap.indent(
-            f"\nName of Item: {item_name}\nCost of Item: {item_cost}\nAmount of Item: {item_amount}\n",
-            8 * " ",
-        )
+    if len(fixed_costs) > 0:
+        for i in range(len(fixed_costs["Name"])):
+            item_name = fixed_costs["Name"][i]
+            item_cost = fixed_costs["Cost"][i]
+            item_amount = fixed_costs["Amount"][i]
+            subtotal_printout += textwrap.indent(
+                f"\nName of Item: {item_name}\nCost of Item: {item_cost}\nAmount of Item: {item_amount}\n",
+                8 * " ",
+            )
 
     to_write = [heading, fundraiser_string, subtotal_heading, subtotal_printout]
     for item in to_write:

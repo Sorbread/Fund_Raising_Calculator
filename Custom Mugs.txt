@@ -1,0 +1,31 @@
+---- Fundraiser Calculator for Custom Mugs. 09/06/23 ----
+              Amount to Produce  Total Expenses  Minimum Selling Price  Recommended Selling Price
+Product Name                                                                                     
+Custom Mugs                 300           750.0                    5.0                          5
+-- Subtotals: --
+
+    Variable Costs:
+        Name of Item: Printing
+        Cost of Item: 0.75
+        Amount of Item: 300
+
+        Name of Item: Plain mugs
+        Cost of Item: 1.0
+        Amount of Item: 300
+
+        Name of Item: Packaging
+        Cost of Item: 0.5
+        Amount of Item: 300
+    Fixed Costs:
+        Name of Item: Stall Hire
+        Cost of Item: 25.0
+        Amount of Item: 1
+
+        Name of Item: Artwork
+        Cost of Item: 35.0
+        Amount of Item: 1
+
+        Name of Item: Signage
+        Cost of Item: 15.0
+        Amount of Item: 1
+

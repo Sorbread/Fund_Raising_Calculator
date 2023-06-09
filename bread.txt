@@ -1,0 +1,7 @@
+---- Fundraiser Calculator for bread. 09/06/23 ----
+              Amount to Produce  Total Expenses  Minimum Selling Price  Recommended Selling Price
+Product Name                                                                                     
+bread                       200               0                   3.75                          4
+-- Subtotals: --
+
+    Variable Costs:    Fixed Costs:
